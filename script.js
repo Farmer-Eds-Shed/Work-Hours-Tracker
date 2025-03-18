@@ -20,16 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
         totalHours = 0;
         totalHoursElement.textContent = totalHours;
 
-        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-        // Fill preceding days with gray-out cells if the month starts after Monday
-        const startDayIndex = monthStartDate.getDay();
+        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const startDayIndex = (monthStartDate.getDay() + 6) % 7; // Adjust to make Monday the first day
         const startDate = monthStartDate.getDate();
-        if (startDayIndex > 1) {
-            for (let i = 1; i < startDayIndex; i++) {
+
+        if (startDayIndex > 0) {
+            for (let i = 0; i < startDayIndex; i++) {
                 const row = Array.from(hoursTableBody.rows).find(row => row.cells[0].textContent === daysOfWeek[i]);
                 if (row) {
-                    row.cells[1].textContent = (startDate - (startDayIndex - i)).toLocaleString('en-GB', { minimumIntegerDigits: 2, useGrouping: false }) + '/' + (monthStartDate.getMonth() + 1).toLocaleString('en-GB', { minimumIntegerDigits: 2, useGrouping: false }) + '/' + monthStartDate.getFullYear();
+                    const previousDate = new Date(monthStartDate);
+                    previousDate.setDate(startDate - (startDayIndex - i));
+                    row.cells[1].textContent = previousDate.getDate().toString().padStart(2, '0') + '/' + (previousDate.getMonth() + 1).toString().padStart(2, '0');
                     row.cells[1].classList.add('gray-out');
                     row.cells[1].setAttribute('contenteditable', 'false');
                     row.cells[2].classList.add('gray-out');
@@ -38,20 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Generate dates from the start date to the day before the same date in the next month
         let date = new Date(monthStartDate);
         const endDate = new Date(monthStartDate);
         endDate.setMonth(endDate.getMonth() + 1);
         endDate.setDate(monthStartDate.getDate() - 1);
 
         while (date <= endDate) {
-            const dayOfWeek = daysOfWeek[date.getDay()];
+            const dayOfWeek = daysOfWeek[(date.getDay() + 6) % 7];
             const row = Array.from(hoursTableBody.rows).find(row => row.cells[0].textContent === dayOfWeek);
 
             if (row) {
                 for (let i = 1; i < row.cells.length; i += 2) {
                     if (!row.cells[i].textContent) {
-                        row.cells[i].textContent = date.toLocaleDateString('en-GB');
+                        row.cells[i].textContent = date.getDate().toString().padStart(2, '0') + '/' + (date.getMonth() + 1).toString().padStart(2, '0');
                         break;
                     }
                 }
