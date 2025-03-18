@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Hours Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Work Hours Tracker</h1>
+        <form id="monthForm">
+            <label for="monthStartDate">Month Start Date:</label>
+            <input type="date" id="monthStartDate" name="monthStartDate" required>
+            <button type="submit">Generate Month</button>
+        </form>
+        <table id="hoursTable">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Date</th>
+                    <th>Hrs</th>
+                    <th>Date</th>
+                    <th>Hrs</th>
+                    <th>Date</th>
+                    <th>Hrs</th>
+                    <th>Date</th>
+                    <th>Hrs</th>
+                    <th>Date</th>
+                    <th>Hrs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                    <td class="date-cell"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="10">Total</td>
+                    <td id="totalHours">0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
